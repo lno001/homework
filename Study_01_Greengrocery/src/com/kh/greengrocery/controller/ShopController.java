@@ -44,4 +44,10 @@ public class ShopController {
 		shopS.sellItem(number, sellNum);
 	}
 
+	public void addQuantity(String id, int quantity) {
+		shopS.addQuantity(id, quantity);
+	}
+	
+	
+
 }

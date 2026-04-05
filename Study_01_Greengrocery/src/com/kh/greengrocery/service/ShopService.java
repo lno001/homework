@@ -100,4 +100,16 @@ public class ShopService {
 		list.set(index, new ShopInventory(id, l.getName(), l.getPrice(), l.getQuantity() - sellNum));
 	}
 
+	public void addQuantity(String id, int quantity) {
+		int index = 0;
+		for(int i = 0; i < list.size(); i++) {
+			if(id.equals(list.get(i).getId())) {
+				index = i;
+				break;
+			}
+		}
+		ShopInventory l = list.get(index);
+		list.set(index, new ShopInventory(id, l.getName(), l.getPrice(), l.getQuantity() + quantity));
+	}
+
 }

@@ -36,7 +36,7 @@ public class ShopView {
 				break;
 			case "4" : sellItem();
 				break;
-			case "5" :
+			case "5" : addQuantity();
 				break;
 			case "6" :
 				break;
@@ -217,7 +217,7 @@ public class ShopView {
 		while(true) {
 			int checkNum;
 			System.out.println("--------------------------------------");
-			System.out.print("꺼낼 재고 수량을 입력해주세요 > ");
+			System.out.println("꺼낼 재고 수량을 입력해주세요.");
 			System.out.print("숫자만 입력해주세요 > ");
 			String checkInt = sc.nextLine();
 			try {
@@ -242,6 +242,48 @@ public class ShopView {
 			shopC.sellItem(number, sellNum);
 			System.out.println("성공적으로 물건을 꺼냈습니다.");
 			break;
+		}
+	}
+	
+	private void addQuantity() {
+		String id;
+		int quantity;
+		System.out.println("======================================");
+		System.out.println("재고 보충하기");
+		System.out.println("재고를 보충할 재고번호를 알려주세요.");
+		while(true) {
+			System.out.print("재고번호를 모르신다면 'exit'를 입력하세요 > ");
+			id = sc.nextLine();
+			if ("exit".equals(id)) {
+				System.out.println("메인 메뉴로 돌아갑니다.");
+				return;
+			}
+			List<ShopInventory> list = shopC.checkNumber(id);
+			if (list == null) {
+				System.out.println("잘못된 재고 번호입니다.");
+				continue;
+			}
+			int checkNum;
+			while(true) {
+				System.out.println("--------------------------------------");
+				System.out.println("보충할 재고 수량을 입력해주세요.");
+				System.out.print("숫자만 입력해주세요 > ");
+				String checkInt = sc.nextLine();
+				try {
+					checkNum = shopC.checkNum(Integer.parseInt(checkInt));
+				} catch (NumberFormatException e) {
+					System.out.println("잘못 입력하셨습니다. 정수 값으로 입력해주세요.");
+					continue;
+				}
+				if (checkNum == -1) {
+					System.out.println("보충할 재고는 음수가 될 수 없습니다.");
+					continue;
+				}
+				quantity = Integer.parseInt(checkInt);
+				break;
+			}
+		shopC.addQuantity(id, quantity);
+		System.out.println("성공적으로 물건을 보충했습니다.");
 		}
 	}
 }
