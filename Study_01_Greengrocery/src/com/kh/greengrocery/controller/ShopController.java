@@ -24,4 +24,24 @@ public class ShopController {
 		return shopS.selectAll();
 	}
 
+	public List<ShopInventory> selectLowAll(int stock) {
+		return shopS.selectLowAll(stock);
+	}
+
+	public int checkName(String name) {
+		return shopS.checkName(name);
+	}
+
+	public List<ShopInventory> selectName(String name) {
+		return shopS.selectName(name);
+	}
+
+	public List<ShopInventory> checkNumber(String number) {
+		return shopS.checkNumber(number);
+	}
+
+	public void sellItem(String number, int sellNum) {
+		shopS.sellItem(number, sellNum);
+	}
+
 }

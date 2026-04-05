@@ -7,6 +7,7 @@ import com.kh.greengrocery.VO.ShopInventory;
 
 public class ShopService {
 	private List<ShopInventory> list = new ArrayList<ShopInventory>();
+	private List<ShopInventory> stocks = new ArrayList<ShopInventory>();
 	private int fruitsId;
 	private int vegetablesId;
 	
@@ -41,6 +42,62 @@ public class ShopService {
 	
 	public List<ShopInventory> selectAll() {
 		return list;
+	}
+
+	public List<ShopInventory> selectLowAll(int stock) {
+		stocks.clear();
+		for(int i = 0; i < list.size(); i++) {
+			if(stock >= list.get(i).getQuantity()) {
+				stocks.add(list.get(i));
+			}
+		}
+		return stocks;
+	}
+
+	public int checkName(String name) {
+		int num = 0;
+		for(int i = 0; i < list.size(); i++) {
+			if(name.equals(list.get(i).getName())) {
+				++num;
+			}
+		}
+		if(num == 1) {
+			return 1;
+		} else if(num > 1){
+			return 2;
+		}
+		return -1;
+	}
+
+	public List<ShopInventory> selectName(String name) {
+		stocks.clear();
+		for(int i = 0; i < list.size(); i++) {
+			if(name.equals(list.get(i).getName())) {
+				stocks.add(list.get(i));
+			}
+		}
+		return stocks;
+	}
+
+	public List<ShopInventory> checkNumber(String number) {
+		for(int i = 0; i < list.size(); i++) {
+			if(number.equals(list.get(i).getId())) {
+				return list;
+			}
+		}
+		return null;
+	}
+
+	public void sellItem(String id, int sellNum) {
+		int index = 0;
+		for(int i = 0; i < list.size(); i++) {
+			if(id.equals(list.get(i).getId())) {
+				index = i;
+				break;
+			}
+		}
+		 ShopInventory l = list.get(index);
+		list.set(index, new ShopInventory(id, l.getName(), l.getPrice(), l.getQuantity() - sellNum));
 	}
 
 }

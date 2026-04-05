@@ -3,7 +3,7 @@ package com.kh.greengrocery.VO;
 import java.util.Objects;
 
 public class ShopInventory {
-	private String number;
+	private String id;
 	private String name;
 	private Integer price;
 	private Integer quantity;
@@ -12,20 +12,20 @@ public class ShopInventory {
 		super();
 	}
 
-	public ShopInventory(String number, String name, Integer price, Integer quantity) {
+	public ShopInventory(String id, String name, Integer price, Integer quantity) {
 		super();
-		this.number = number;
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getId() {
+		return id;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setId(String number) {
+		this.id = number;
 	}
 
 	public String getName() {
@@ -54,7 +54,7 @@ public class ShopInventory {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, number, price, quantity);
+		return Objects.hash(name, id, price, quantity);
 	}
 
 	@Override
@@ -66,13 +66,13 @@ public class ShopInventory {
 		if (getClass() != obj.getClass())
 			return false;
 		ShopInventory other = (ShopInventory) obj;
-		return Objects.equals(name, other.name) && Objects.equals(number, other.number)
+		return Objects.equals(name, other.name) && Objects.equals(id, other.id)
 				&& Objects.equals(price, other.price) && Objects.equals(quantity, other.quantity);
 	}
 
 	@Override
 	public String toString() {
-		return "[No." + number + ", 이름 : " + name + ", 가격 : " + price + ", 재고 수량 : " + quantity
+		return "[No." + id + ", 이름 : " + name + ", 가격 : " + price + ", 재고 수량 : " + quantity
 				+ "]";
 	}
 	
