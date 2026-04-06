@@ -1,9 +1,9 @@
-package com.kh.greengrocery.service;
+package com.kh.greengrocery.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kh.greengrocery.VO.ShopInventory;
+import com.kh.greengrocery.vo.ShopInventory;
 
 public class ShopService {
 	private List<ShopInventory> list = new ArrayList<ShopInventory>();

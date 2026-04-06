@@ -3,8 +3,8 @@ package com.kh.greengrocery.view;
 import java.util.List;
 import java.util.Scanner;
 
-import com.kh.greengrocery.VO.ShopInventory;
 import com.kh.greengrocery.controller.ShopController;
+import com.kh.greengrocery.vo.ShopInventory;
 
 public class ShopView {
 	Scanner sc = new Scanner(System.in);
@@ -47,7 +47,6 @@ public class ShopView {
 				sc.close();
 				return;
 			default : System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
-				continue;
 			}
 		}
 	}

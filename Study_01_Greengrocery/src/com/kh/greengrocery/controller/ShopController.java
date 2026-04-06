@@ -2,8 +2,8 @@ package com.kh.greengrocery.controller;
 
 import java.util.List;
 
-import com.kh.greengrocery.VO.ShopInventory;
-import com.kh.greengrocery.service.ShopService;
+import com.kh.greengrocery.model.service.ShopService;
+import com.kh.greengrocery.vo.ShopInventory;
 
 public class ShopController {
 	ShopService shopS = new ShopService();

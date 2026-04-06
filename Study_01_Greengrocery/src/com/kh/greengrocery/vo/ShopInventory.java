@@ -1,4 +1,4 @@
-package com.kh.greengrocery.VO;
+package com.kh.greengrocery.vo;
 
 import java.util.Objects;
 
