@@ -47,6 +47,14 @@ public class ShopController {
 	public void addQuantity(String id, int quantity) {
 		shopS.addQuantity(id, quantity);
 	}
+
+	public void deleteItem(String id) {
+		shopS.deleteItem(id);
+	}
+
+	public void deleteZero() {
+		shopS.deleteZero();
+	}
 	
 	
 

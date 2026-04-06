@@ -38,9 +38,9 @@ public class ShopView {
 				break;
 			case "5" : addQuantity();
 				break;
-			case "6" :
+			case "6" : deleteItem();
 				break;
-			case "7" :
+			case "7" : deleteZero();
 				break;
 			case "0" : System.out.println("프로그램을 종료합니다. 이용해주셔서 감사합니다.");
 				System.out.println("======================================");
@@ -285,5 +285,34 @@ public class ShopView {
 		shopC.addQuantity(id, quantity);
 		System.out.println("성공적으로 물건을 보충했습니다.");
 		}
+	}
+	
+	private void deleteItem() {
+		String id;
+		System.out.println("======================================");
+		System.out.println("재고 폐기하기");
+		System.out.println("폐기할 재고의 재고번호를 알려주세요.");
+		while(true) {
+			System.out.print("재고번호를 모르신다면 'exit'를 입력하세요 > ");
+			id = sc.nextLine();
+			if ("exit".equals(id)) {
+				System.out.println("메인 메뉴로 돌아갑니다.");
+				return;
+			}
+			List<ShopInventory> list = shopC.checkNumber(id);
+			if (list == null) {
+				System.out.println("잘못된 재고 번호입니다.");
+				continue;
+			}
+			break;
+		}
+		shopC.deleteItem(id);
+		System.out.println("해당 재고가 폐기되었습니다.");
+	}
+	
+	private void deleteZero() {
+		System.out.println("======================================");
+		System.out.println("없는 재고 지우기");
+		shopC.deleteZero();
 	}
 }

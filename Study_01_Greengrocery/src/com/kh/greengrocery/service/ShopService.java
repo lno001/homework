@@ -112,4 +112,23 @@ public class ShopService {
 		list.set(index, new ShopInventory(id, l.getName(), l.getPrice(), l.getQuantity() + quantity));
 	}
 
+	public void deleteItem(String id) {
+		int index = 0;
+		for(int i = 0; i < list.size(); i++) {
+			if(id.equals(list.get(i).getId())) {
+				index = i;
+				break;
+			}
+		}
+		list.remove(index);
+	}
+
+	public void deleteZero() {
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getQuantity() == 0) {
+				list.remove(i);
+			}
+		}
+	}
+
 }
