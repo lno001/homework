@@ -7,7 +7,6 @@ import com.kh.greengrocery.vo.ShopInventory;
 
 public class ShopService {
 	private List<ShopInventory> list = new ArrayList<ShopInventory>();
-	private List<ShopInventory> stocks = new ArrayList<ShopInventory>();
 	private int fruitsId;
 	private int vegetablesId;
 	
@@ -45,7 +44,7 @@ public class ShopService {
 	}
 
 	public List<ShopInventory> selectLowAll(int stock) {
-		stocks.clear();
+		List<ShopInventory> stocks = new ArrayList<ShopInventory>();
 		for(int i = 0; i < list.size(); i++) {
 			if(stock >= list.get(i).getQuantity()) {
 				stocks.add(list.get(i));
@@ -70,7 +69,7 @@ public class ShopService {
 	}
 
 	public List<ShopInventory> selectName(String name) {
-		stocks.clear();
+		List<ShopInventory> stocks = new ArrayList<ShopInventory>();
 		for(int i = 0; i < list.size(); i++) {
 			if(name.equals(list.get(i).getName())) {
 				stocks.add(list.get(i));

@@ -8,7 +8,7 @@ import com.kh.greengrocery.vo.ShopInventory;
 
 public class ShopView {
 	Scanner sc = new Scanner(System.in);
-	ShopController shopC = new ShopController();
+	ShopController shopController = new ShopController();
 	
 	public void mainView() {
 		while(true) {
@@ -65,7 +65,7 @@ public class ShopView {
 				System.out.println("재고의 품목을 알려주세요.");
 				System.out.print("과일이면 F, 채소면 V를 입력해주세요 > ");
 				String checkItem = sc.nextLine();
-				item = shopC.checkItem(checkItem);
+				item = shopController.checkItem(checkItem);
 				if (item == -1) {
 					System.out.println("잘못 입력하셨습니다. 품목을 제대로 알려주세요.");
 					continue;
@@ -82,7 +82,7 @@ public class ShopView {
 				System.out.print("숫자만 입력해주세요 > ");
 				String checkInt = sc.nextLine();
 				try {
-					checkNum = shopC.checkNum(Integer.parseInt(checkInt));
+					checkNum = shopController.checkNum(Integer.parseInt(checkInt));
 				} catch (NumberFormatException e) {
 					System.out.println("잘못 입력하셨습니다. 정수 값으로 입력해주세요.");
 					continue;
@@ -101,7 +101,7 @@ public class ShopView {
 				System.out.print("숫자만 입력해주세요 > ");
 				String checkInt = sc.nextLine();
 				try {
-					checkNum = shopC.checkNum(Integer.parseInt(checkInt));
+					checkNum = shopController.checkNum(Integer.parseInt(checkInt));
 				} catch (NumberFormatException e) {
 					System.out.println("잘못 입력하셨습니다. 정수 값으로 입력해주세요.");
 					continue;
@@ -113,15 +113,15 @@ public class ShopView {
 				quantity = Integer.parseInt(checkInt);
 				break;
 			}
-			shopC.addItem(item, name, price, quantity);
-			return;
+			shopController.addItem(item, name, price, quantity);
+			break;
 		}
 	}
 	
 	private void selectAll() {
 		System.out.println("======================================");
 		System.out.println("모든 재고 보기");
-		List<ShopInventory> list = shopC.selectAll();
+		List<ShopInventory> list = shopController.selectAll();
 		
 		if (!list.isEmpty()) {
 			for(ShopInventory si : list) {
@@ -147,7 +147,7 @@ public class ShopView {
 			System.out.print("숫자만 입력해주세요 > ");
 			String checkInt = sc.nextLine();
 			try {
-				checkNum = shopC.checkNum(Integer.parseInt(checkInt));
+				checkNum = shopController.checkNum(Integer.parseInt(checkInt));
 			} catch (NumberFormatException e) {
 				System.out.println("잘못 입력하셨습니다. 정수 값으로 입력해주세요.");
 				continue;
@@ -159,7 +159,7 @@ public class ShopView {
 			stock = Integer.parseInt(checkInt);
 			break;
 		}
-		List<ShopInventory> stocks = shopC.selectLowAll(stock);
+		List<ShopInventory> stocks = shopController.selectLowAll(stock);
 		if (!stocks.isEmpty()) {
 			for(ShopInventory si : stocks) {
 				System.out.println("--------------------------------------");
@@ -183,18 +183,18 @@ public class ShopView {
 			System.out.println("--------------------------------------");
 			System.out.print("판매할 재고 이름을 알려주세요 > ");
 			name = sc.nextLine();
-			int checkName = shopC.checkName(name);
+			int checkName = shopController.checkName(name);
 			if(checkName == -1) {
 				System.out.println("존재하지 않는 재고입니다. 메인 메뉴로 넘어갑니다.");
 				return;
 			} else if(checkName == 1) {
-				number = shopC.selectName(name).get(0).getId();
+				number = shopController.selectName(name).get(0).getId();
 				break;
 			} else if(checkName > 1) {
 				System.out.println("그 재고는 두 군데 이상 존재하는 이름입니다.");
 				System.out.println("중복된 이름의 재고들의 재고번호입니다");
 				System.out.println("--------------------------------------");
-				List<ShopInventory> sameName = shopC.selectName(name);
+				List<ShopInventory> sameName = shopController.selectName(name);
 				for(int i =0; i < sameName.size(); i++) {
 					System.out.print(sameName.get(i).getId() + "  |  ");
 				}
@@ -203,7 +203,7 @@ public class ShopView {
 					System.out.println("--------------------------------------");
 					System.out.print("추가로 재고번호를 입력해주세요 > ");
 					number = sc.nextLine();
-					List<ShopInventory> checkNumber = shopC.checkNumber(number);
+					List<ShopInventory> checkNumber = shopController.checkNumber(number);
 					if (checkNumber.equals(null)) {
 						System.out.println("잘못된 재고번호입니다. 다시 입력해주세요.");
 						continue;
@@ -220,7 +220,7 @@ public class ShopView {
 			System.out.print("숫자만 입력해주세요 > ");
 			String checkInt = sc.nextLine();
 			try {
-				checkNum = shopC.checkNum(Integer.parseInt(checkInt));
+				checkNum = shopController.checkNum(Integer.parseInt(checkInt));
 			} catch (NumberFormatException e) {
 				System.out.println("잘못 입력하셨습니다. 정수 값으로 입력해주세요.");
 				continue;
@@ -230,7 +230,7 @@ public class ShopView {
 				continue;
 			}
 			sellNum = Integer.parseInt(checkInt);
-			List<ShopInventory> sellItem = shopC.checkNumber(number);
+			List<ShopInventory> sellItem = shopController.checkNumber(number);
 			if (sellNum > sellItem.get(0).getQuantity()) {
 				System.out.println("꺼낼 재고는 현재 재고 수량보다 클 수 없습니다.");
 				System.out.println("손님에게는 재고가 부족하다고 말해주세요.");
@@ -238,7 +238,7 @@ public class ShopView {
 				return;
 			}
 			System.out.println("--------------------------------------");
-			shopC.sellItem(number, sellNum);
+			shopController.sellItem(number, sellNum);
 			System.out.println("성공적으로 물건을 꺼냈습니다.");
 			break;
 		}
@@ -257,7 +257,7 @@ public class ShopView {
 				System.out.println("메인 메뉴로 돌아갑니다.");
 				return;
 			}
-			List<ShopInventory> list = shopC.checkNumber(id);
+			List<ShopInventory> list = shopController.checkNumber(id);
 			if (list == null) {
 				System.out.println("잘못된 재고 번호입니다.");
 				continue;
@@ -269,7 +269,7 @@ public class ShopView {
 				System.out.print("숫자만 입력해주세요 > ");
 				String checkInt = sc.nextLine();
 				try {
-					checkNum = shopC.checkNum(Integer.parseInt(checkInt));
+					checkNum = shopController.checkNum(Integer.parseInt(checkInt));
 				} catch (NumberFormatException e) {
 					System.out.println("잘못 입력하셨습니다. 정수 값으로 입력해주세요.");
 					continue;
@@ -281,7 +281,7 @@ public class ShopView {
 				quantity = Integer.parseInt(checkInt);
 				break;
 			}
-		shopC.addQuantity(id, quantity);
+		shopController.addQuantity(id, quantity);
 		System.out.println("성공적으로 물건을 보충했습니다.");
 		}
 	}
@@ -298,20 +298,20 @@ public class ShopView {
 				System.out.println("메인 메뉴로 돌아갑니다.");
 				return;
 			}
-			List<ShopInventory> list = shopC.checkNumber(id);
+			List<ShopInventory> list = shopController.checkNumber(id);
 			if (list == null) {
 				System.out.println("잘못된 재고 번호입니다.");
 				continue;
 			}
 			break;
 		}
-		shopC.deleteItem(id);
+		shopController.deleteItem(id);
 		System.out.println("해당 재고가 폐기되었습니다.");
 	}
 	
 	private void deleteZero() {
 		System.out.println("======================================");
 		System.out.println("없는 재고 지우기");
-		shopC.deleteZero();
+		shopController.deleteZero();
 	}
 }

@@ -6,54 +6,54 @@ import com.kh.greengrocery.model.service.ShopService;
 import com.kh.greengrocery.vo.ShopInventory;
 
 public class ShopController {
-	ShopService shopS = new ShopService();
+	ShopService shopService = new ShopService();
 
 	public int checkItem(String item) {
-		return shopS.checkItem(item);
+		return shopService.checkItem(item);
 	}
 
 	public int checkNum(int num) {
-		return shopS.checkNum(num);
+		return shopService.checkNum(num);
 	}
 
 	public void addItem(int item, String name, int price, int quantity) {
-		shopS.addItem(item, name, price, quantity);
+		shopService.addItem(item, name, price, quantity);
 	}
 
 	public List<ShopInventory> selectAll() {
-		return shopS.selectAll();
+		return shopService.selectAll();
 	}
 
 	public List<ShopInventory> selectLowAll(int stock) {
-		return shopS.selectLowAll(stock);
+		return shopService.selectLowAll(stock);
 	}
 
 	public int checkName(String name) {
-		return shopS.checkName(name);
+		return shopService.checkName(name);
 	}
 
 	public List<ShopInventory> selectName(String name) {
-		return shopS.selectName(name);
+		return shopService.selectName(name);
 	}
 
 	public List<ShopInventory> checkNumber(String number) {
-		return shopS.checkNumber(number);
+		return shopService.checkNumber(number);
 	}
 
 	public void sellItem(String number, int sellNum) {
-		shopS.sellItem(number, sellNum);
+		shopService.sellItem(number, sellNum);
 	}
 
 	public void addQuantity(String id, int quantity) {
-		shopS.addQuantity(id, quantity);
+		shopService.addQuantity(id, quantity);
 	}
 
 	public void deleteItem(String id) {
-		shopS.deleteItem(id);
+		shopService.deleteItem(id);
 	}
 
 	public void deleteZero() {
-		shopS.deleteZero();
+		shopService.deleteZero();
 	}
 	
 	
