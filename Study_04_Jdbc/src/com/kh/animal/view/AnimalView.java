@@ -1,9 +1,14 @@
 package com.kh.animal.view;
 
+import java.util.List;
 import java.util.Scanner;
+
+import com.kh.animal.controller.AnimalController;
+import com.kh.animal.model.dto.AnimalDto;
 
 public class AnimalView {
 	Scanner sc = new Scanner(System.in);
+	AnimalController ac = new AnimalController();
 	
 	public void animalMenu() {
 		System.out.println("=========================");
@@ -12,7 +17,7 @@ public class AnimalView {
 			System.out.println("-------------------------");
 			System.out.println("동물 메뉴");
 			System.out.println("=========================");
-			System.out.println("1. 모든 동물보기");
+			System.out.println("1. 모든 동물 보기");
 			System.out.println("2. 동물 추가하기");
 			System.out.println("3. 동물 이름 개명하기");
 			System.out.println("4. 동물 구역 배정하기");
@@ -38,6 +43,10 @@ public class AnimalView {
 	}
 
 	private void animalFindAll() {
+		System.out.println("=========================");
+		System.out.println("모든 동물 보기");
+		System.out.println("-------------------------");
 		
+		List<AnimalDto> animalList = ac.animalFindAll();
 	}
 }

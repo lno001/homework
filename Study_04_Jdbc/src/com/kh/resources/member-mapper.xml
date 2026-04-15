@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>MEMBER SQL</comment>
+<!-- 모든 동물 보기 -->
+<entry key="animalFindAll">
+	SELECT
+			*
+	  FROM
+	  		ANIMAL
+	 ORDER
+	 	BY
+	 		ANIMAL_ID DESC
+</entry>
+<!-- 동물 추가하기 -->
+<entry key="insertAnimal">
+	INSERT
+	  INFO
+	  		ANIMAL
+	  		(
+	  		ANIMAL_ID,		<!-- A00 형식 -->
+	  		ANIMAL_NAME,	<!-- STRING -->
+	  		SPECIES_ID,		<!-- S00 형식 -->
+	  		ZONE_ID,		<!-- Z0 형식 -->
+	  		KEEPER_ID,		<!-- K00 형식 -->
+	  		GENDER,			<!-- F 또는 M -->
+	  		WEIGHT_KG,		<!-- INT -->
+	  		BIRTH_DATE,		<!-- SQL.DATE 형식 -->
+	  		ARRIVAL_DATE	<!-- SYSDATE -->
+	  		)
+	VALUES
+			(
+			'A' || SEQ_ANIMAL.NEXTVAL,
+			?, <!-- 동물이름 -->
+			?, <!-- 종 번호 -->
+			?, <!-- 당담 사육사 번호 -->
+			?, <!-- 성별 -->
+			?, <!-- 무게 -->
+			?, <!-- 태어난 날 -->
+			SYSDATE
+			)
+</entry>
+
+
+</properties>
