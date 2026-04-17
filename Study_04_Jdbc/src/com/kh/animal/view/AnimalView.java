@@ -1,10 +1,8 @@
 package com.kh.animal.view;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.kh.animal.controller.AnimalController;
-import com.kh.animal.model.dto.AnimalDto;
 
 public class AnimalView {
 	Scanner sc = new Scanner(System.in);
@@ -47,6 +45,7 @@ public class AnimalView {
 		System.out.println("모든 동물 보기");
 		System.out.println("-------------------------");
 		
-		List<AnimalDto> animalList = ac.animalFindAll();
+	//	List<AnimalDto> animalList = ac.animalFindAll();
+		
 	}
 }
