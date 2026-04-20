@@ -8,6 +8,10 @@
     <setting name="logImpl" value="STDOUT_LOGGING"/>
   </settings>
   <typeAliases>
+    <typeAlias type="com.kh.delivery.dto.DeliMember" alias="deliMember"/>
+    <typeAlias type="com.kh.delivery.dto.Menu" alias="menu"/>
+    <typeAlias type="com.kh.delivery.dto.Order" alias="order"/>
+    <typeAlias type="com.kh.delivery.dto.Restaurant" alias="restaurant"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -21,5 +25,8 @@
     </environment>
   </environments>
   <mappers>
+    <mapper resource="mappers/member-mapper.xml"/>
+    <mapper resource="mappers/order-mapper.xml"/>
+    <mapper resource="mappers/restaurant-mapper.xml"/>
   </mappers>
 </configuration>

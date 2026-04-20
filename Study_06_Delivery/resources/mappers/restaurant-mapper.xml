@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml-model href=""?>
+<mapper namespace="restaurantMapper">
+
+  <select id="selectAllRestaurant" resultType="Restaurant">
+  	SELECT
+  		   *
+  	  FROM
+  	  	   RESTAURANT
+  	 ORDER
+  	 	BY
+  	 	   REST_NO DESC
+  </select>
+	
+
+
+</mapper>
