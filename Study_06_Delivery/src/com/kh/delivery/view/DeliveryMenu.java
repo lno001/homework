@@ -132,7 +132,7 @@ public class DeliveryMenu {
 				System.out.println(memberId + "는 사용 가능한 아이디 입니다.");
 			}
 			while(true) {
-				System.out.println("사용할 비밀번호를 입력해주세요 > ");
+				System.out.print("사용할 비밀번호를 입력해주세요 > ");
 				memberPw = sc.nextLine();
 				boolean pwCheck = mc.pwCheck(memberPw);
 				if (pwCheck == false) {
@@ -152,7 +152,7 @@ public class DeliveryMenu {
 				break;
 			}
 			while(true) {
-				System.out.println("현재 주소를 입력해주세요 > ");
+				System.out.print("현재 주소를 입력해주세요 > ");
 				address = sc.nextLine();
 				boolean addressCheck = mc.addressCheck(address);
 				if (addressCheck == false) {
@@ -202,12 +202,39 @@ public class DeliveryMenu {
 		List<Restaurant> restaurants = rc.selectAllRestaurant();
 		restaurants.forEach(r -> System.out.println("가게 번호 : "+ r.getRestNo() + 
 													" | 가게 이름 : " + r.getRestName() +
-													" | 카테고리 : " + r.getCategory() +
+													" | 가게 분류 : " + r.getCategory() +
 													" | 최소 주문금액 : " + r.getMinPrice() +
 													"원 | 배달비 : " + r.getDeliveryFee() + "원"));
 	}
 	// 동적 SQL <if> 필수 (카테고리 미입력 시 전체)
 	private void restaurantFindByKeyword() {
+		while(true) {
+			System.out.println("==============================");
+			System.out.println("카테고리별 가게 목록");
+			System.out.println("------------------------------");
+			System.out.println("1. 가게 번호");
+			System.out.println("2. 가게 이름");
+			System.out.println("3. 가게 분류");
+			System.out.println("4. 최소 주문금액");
+			System.out.println("5. 배달비");
+			System.out.print("검색할 카테고리를 골라주세요 > (미입력 시 전체 조회)");
+			String menuNo = sc.nextLine();
+			switch(menuNo) {
+			case ""  : System.out.print("검색어를 입력해주세요 > "); break;
+			case "1" : System.out.print("가게 번호를 입력해주세요 > "); break;
+			case "2" : System.out.print("가게 이름을 입력해주세요 > "); break;
+			case "3" : System.out.print("가게 분류를 입력해주세요 > "); break;
+			case "4" : System.out.print("최소 주문금액을 입력해주세요 > "); break;
+			case "5" : System.out.print("배달비를 입력해주세요 > "); break;
+			default  : System.out.println("지원하지 않는 카테고리입니다."); return;
+			}
+			String keyword = sc.nextLine();
+			if (keyword == "") {
+				System.out.println("공란은 검색할 수없습니다.");
+				continue;
+			}
+		}
+		
 		
 	}
 	// 가게 1개 선택 → 해당 가게의 메뉴 목록 전체 조회

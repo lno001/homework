@@ -18,28 +18,28 @@ MemberService ms = new MemberService();
 	}
 
 	public boolean idCheck(String memberId) {
-		if (memberId.length() <= 20) {
+		if (memberId.length() <= 20 && memberId != "") {
 			return true;
 		}
 		return false; 
 	}
 	
 	public boolean pwCheck(String memberPw) {
-		if (memberPw.length() <= 20) {
+		if (memberPw.length() <= 20 && memberPw != "") {
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean nameCheck(String memberName) {
-		if (memberName.length() <= 30) {
+		if (memberName.length() <= 30 && memberName != "") {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean addressCheck(String address) {
-		if (address.length() <= 100) {
+		if (address.length() <= 100 && address != "") {
 			return true;
 		}
 		return false;
