@@ -1,6 +1,8 @@
 package com.kh.delivery.view;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.kh.delivery.controller.MemberController;
@@ -233,6 +235,11 @@ public class DeliveryMenu {
 				System.out.println("공란은 검색할 수없습니다.");
 				continue;
 			}
+			Map<String, String> keywords = new HashMap<String, String>();
+			keywords.put("menuNo", menuNo);
+			keywords.put("keyword", keyword);
+			
+			List<Restaurant>restaurants = rc.restaurantFindByKeyword(keywords);
 		}
 		
 		
