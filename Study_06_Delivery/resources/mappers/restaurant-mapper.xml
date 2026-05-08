@@ -14,7 +14,42 @@
   	 	BY
   	 	   REST_NO DESC
   </select>
-	
+
+  <select id="restaurantFindByKeyword" resultType="restaurant">
+  	SELECT
+  		   *
+  	  FROM
+  	  	   RESTAURANT
+  	 WHERE
+  	 <if test="menuNo == ''">
+  	 	   REST_NO = #{keyword}
+  	 	OR
+  	 	   REST_NAME LIKE '%' || #{keyword} || '%'
+  	 	OR
+  	 	   CATEGORY LIKE '%' || #{keyword} || '%'
+  	 	OR
+  	 	   MIN_PRICE &lt;= #{keyword}
+  	 	OR
+  	 	   DELIVERY_FEE &lt;= #{keyword}
+  	 </if>
+  	 <if test="'1'.equals(menuNo)">
+  	 	   REST_NO = #{keyword}
+  	 </if>
+  	 <if test="'2'.equals(menuNo)">
+		   REST_NAME = LIKE '%' || #{keyword} || '%'
+  	 </if>
+  	 <if test="'3'.equals(menuNo)">
+		   CATEGORY = LIKE '%' || #{keyword} || '%'
+  	 </if>
+  	 <if test="'4'.equals(menuNo)">
+		   MIN_PRICE &lt;= #{keyword}
+  	 </if>
+  	 <if test="'5'.equals(menuNo)">
+		   DELIVERY_FEE &lt;= #{keyword}
+  	 </if>
+  
+  
+  </select>	
 
 
 </mapper>

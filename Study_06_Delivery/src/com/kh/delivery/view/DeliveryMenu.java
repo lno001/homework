@@ -239,7 +239,7 @@ public class DeliveryMenu {
 			keywords.put("menuNo", menuNo);
 			keywords.put("keyword", keyword);
 			
-			List<Restaurant>restaurants = rc.restaurantFindByKeyword(keywords);
+//			List<Restaurant>restaurants = rc.restaurantFindByKeyword(keywords);
 		}
 		
 		
